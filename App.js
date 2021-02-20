@@ -1,21 +1,49 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import 'react-native-gesture-handler'
+import React, { Component } from 'react'
+import { StyleSheet, StatusBar, View } from 'react-native'
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+import reducer from './reducers'
+import middleware from './middleware'
+import Main from './components/Main'
+import { darkPurple } from './utils/colors'
+import Constants from 'expo-constants'
+import {
+  setLocalNotification,
+  clearLocalNotification
+} from "./utils/helpers"
 
-export default function App() {
+const store = createStore(reducer, middleware)
+
+function FstatusBar({ backgroundColor, ...props }) {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <View style={{ backgroundColor, height: Constants.statusBarHeight }}>
+      <StatusBar translucent backgroundColor={backgroundColor} {...props} />
     </View>
-  );
+  )
+}
+
+export default class App extends Component {
+  componentDidMount() {
+    clearLocalNotification()
+      .then(setLocalNotification)
+  }
+
+  render() {
+    return (
+      <Provider store={store}>
+        <FstatusBar backgroundColor={darkPurple} barStyle='light-content' />
+        <View style={styles.container}>
+          <Main />
+        </View>
+      </Provider>
+    )
+  }
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
-});
+})
