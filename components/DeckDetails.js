@@ -1,14 +1,9 @@
 import React, { Component } from 'react'
-import {
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity,
-} from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
-import {FontAwesome} from '@expo/vector-icons'
+import { FontAwesome } from '@expo/vector-icons'
 import { deleteDeck } from '../actions/index'
-import { lightPurple, white, black, darkPurple, gray } from '../utils/colors'
+import { lightPurple, white, black, darkPurple } from '../utils/colors'
 
 class DeckDetails extends Component {
   state = {

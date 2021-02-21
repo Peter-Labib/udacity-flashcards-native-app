@@ -11,7 +11,7 @@ import {
 } from 'react-native'
 import { connect } from 'react-redux'
 import { addCard } from '../actions/index'
-import FontAwesome from '../node_modules/@expo/vector-icons/FontAwesome'
+import { FontAwesome } from '@expo/vector-icons'
 import { black, darkPurple, gray, lightPurple, white } from '../utils/colors'
 
 function SubmitBtn({ onPress, disab }) {

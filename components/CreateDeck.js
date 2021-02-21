@@ -11,7 +11,7 @@ import { getRandomIntNum } from '../utils/helpers'
 import { connect } from 'react-redux'
 import { addDeck, handleInitialData } from '../actions/index'
 import { black, darkPurple, lightPurple, white, gray } from '../utils/colors'
-import FontAwesome from '../node_modules/@expo/vector-icons/FontAwesome'
+import { FontAwesome } from '@expo/vector-icons'
 
 function SubmitBtn({ onPress, disab }) {
   return (
